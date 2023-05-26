@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Documentação do Software
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este documento fornece informações sobre o projeto de software "Store Project", incluindo links para os repositórios do back-end e front-end, instruções para executar o projeto localmente e detalhes sobre os endpoints da API.
 
-## Available Scripts
+## Links dos repositórios
 
-In the project directory, you can run:
+- Back-end: [https://github.com/LaraGraziela/store_project_back](https://github.com/LaraGraziela/store_project_back)
+- Front-end: [https://github.com/LaraGraziela/store_project_front](https://github.com/LaraGraziela/store_project_front)
+- Documentação da API via Postman: [https://documenter.getpostman.com/view/15123976/2s93m7W21n](https://documenter.getpostman.com/view/15123976/2s93m7W21n)
 
-### `npm start`
+## Instruções de instalação e execução
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Siga as instruções abaixo para clonar os repositórios e executar o projeto localmente.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Back-end
 
-### `npm test`
+1. Clone o repositório do back-end em seu ambiente local:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`git clone https://github.com/LaraGraziela/store_project_back`
 
-### `npm run build`
+2. Acesse o diretório `store_project_back`:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`cd store_project_back`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Execute o comando abaixo para instalar as dependências do projeto:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`npm install`
 
-### `npm run eject`
+4. Execute as migrações do banco de dados utilizando o Sequelize:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+`npx sequelize db:migrate`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. Execute o comando abaixo para popular o banco de dados com dados de exemplo:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`npx sequelize db:seed:all`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+6. Inicie o projeto executando o seguinte comando:
 
-## Learn More
+`npm start`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+O back-end estará sendo executado na porta 4000.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Front-end
 
-### Code Splitting
+1. Clone o repositório do front-end em seu ambiente local:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`git clone https://github.com/LaraGraziela/store_project_front`
 
-### Analyzing the Bundle Size
+2. Acesse o diretório `store_project_front`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+`cd store_project_front`
 
-### Making a Progressive Web App
+3. Execute o comando abaixo para instalar as dependências do projeto:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+`npm install`
 
-### Advanced Configuration
+4. Inicie o projeto executando o seguinte comando:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+`npm start`
 
-### Deployment
+O front-end estará sendo executado na porta 3000.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Acesso à API
 
-### `npm run build` fails to minify
+As rotas do projeto podem ser acessadas em `http://localhost:4000`. Consulte a documentação da API [aqui](https://documenter.getpostman.com/view/15123976/2s93m7W21n) para obter informações detalhadas sobre os endpoints disponíveis.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Acesso via navegador
+
+O projeto pode ser acessado pelo navegador em `http://localhost:3000`.
+
+## Endpoints
+
+A seguir estão listados os principais endpoints disponíveis na API:
+
+### Usuários
+
+- Listar usuários: `GET /users`
+- Buscar usuário por ID: `GET /user/:id`
+- Atualizar usuário por ID: `PUT /user/:id`
+- Deletar usuário por ID: `DELETE /user/:id`
+- Autenticação de usuário: `POST /login`
+- Registrar novo usuário: `POST /register`
+
+### Produtos
+
+- Listar produtos: `GET /products`
+- Buscar produto por ID: `GET /product/:id`
+- Criar novo produto: `POST /products`
+- Atualizar produto por ID: `PUT /product/:id`
+- Deletar produto por ID: `DELETE /product/:id`
+
+## Instruções de login
+
+- Usuário ADMIN:
+- Email: admin@gmail.com
+- Senha: 12345
+
+- Usuário CLIENT:
+- Email: client@gmail.com
+- Senha: 12345
+
+## Banco de dados
+
+O projeto utiliza um banco de dados SQLite, localizado em `/store_project_back/database/db.sqlite`.
+
+---
+
+Este documento fornece as informações necessárias para configurar e executar o projeto "Store Project" localmente. Certifique-se de seguir as instruções corretamente para garantir o funcionamento adequado do software. Em caso de dúvidas, consulte a documentação da API.

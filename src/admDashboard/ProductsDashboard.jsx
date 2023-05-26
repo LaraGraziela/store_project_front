@@ -29,6 +29,7 @@ const headCells = [
 ];
 
 const ProductsDashboard = () => {
+  const [userName, setUserName] = useState("");
   const [newProductForm, setNewProductForm] = useState(false);
   const [editProductForm, setEditProductForm] = useState(false);
   const [productToEdit, setProductToEdit] = useState({});
@@ -66,12 +67,18 @@ const ProductsDashboard = () => {
     await getProducts();
   };
 
+  const getUserName = () => {
+    const user = JSON.parse(localStorage.getItem("@user"));
+    setUserName(user.name);
+  };
+
   const logout = () => {
     localStorage.removeItem("@user");
     window.location.reload();
   };
 
   useEffect(() => {
+    getUserName();
     getProducts();
   }, []);
 
@@ -91,6 +98,11 @@ const ProductsDashboard = () => {
         />
       )}
       <div style={styles.productsBox}>
+        {userName && (
+          <Typography variant="h5" style={{ marginBottom: "10px" }}>
+            Olá, {userName}!
+          </Typography>
+        )}
         <Typography variant="h4" component="h4" gutterBottom>
           Produtos
           <Button
